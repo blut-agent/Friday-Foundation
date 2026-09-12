@@ -259,3 +259,57 @@ def test_delegation_brief_command_matches_issue_contract():
     ]
     for term in required_terms:
         assert term in body
+
+
+def test_sales_call_review_command_matches_issue_contract():
+    """The sales-call-review command has the output, voice, and sections requested in #26."""
+    text = (COMMANDS_DIR / "sales-call-review.md").read_text(encoding="utf-8")
+    fm, body = parse_frontmatter(text)
+
+    assert fm["name"] == "sales-call-review"
+    assert "friday/voice.md" in fm["description"]
+    assert "friday/sales-call-review.md" in fm["description"]
+
+    required_sections = [
+        "# /sales-call-review",
+        "## Step 1: Read the founder's voice profile (if it exists)",
+        "## Step 6: Write the review",
+    ]
+    for section in required_sections:
+        assert section in body
+
+    required_terms = [
+        "Customer language",
+        "Needs",
+        "Objections",
+        "Unanswered questions",
+        "Promises made",
+        "Next actions",
+        "friday/sales-call-review.md",
+        "Sales call review saved to `friday/sales-call-review.md`",
+    ]
+    for term in required_terms:
+        assert term in body
+
+
+def test_sales_call_review_is_evidence_bound_and_local_only():
+    """The review keeps every claim inside the pasted source and never leaves the machine."""
+    text = (COMMANDS_DIR / "sales-call-review.md").read_text(encoding="utf-8")
+
+    assert "Sanitize it first" in text, "the input step must ask for sanitized material"
+    assert "I will quote only words that are in the source" in text, (
+        "the evidence rule must be stated before any finding is written"
+    )
+    assert "it does not go in" in text, (
+        "anything absent from the source must be excluded rather than filled in"
+    )
+    assert "Every quote is verbatim" in text, "quotes must be checked against the source"
+    assert "No invented numbers" in text, "the review must not invent metrics or probabilities"
+    assert "No invented sentiment" in text, "the review must report behavior, not guessed mood"
+    assert "inference:" in text, "inferences must be labelled as inferences"
+    assert "does not send anything anywhere" in text, (
+        "the review must not be sent off the machine"
+    )
+    assert "does not transcribe audio" in text, (
+        "the command must be explicit that it works from pasted text only"
+    )
