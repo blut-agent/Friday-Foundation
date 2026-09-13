@@ -47,7 +47,7 @@ from datetime import datetime, timezone
 COMMANDS = {
     "amplify", "brief", "changelog", "competitive-analysis", "customer-feedback",
     "decide", "delegation-brief", "explore-idea", "friday-upgrade", "go-to-market",
-    "learnings", "meetingprep", "new-capability", "offer-creation", "positioning",
+    "launch-retro", "learnings", "meetingprep", "new-capability", "offer-creation", "positioning",
     "pricing-strategy", "product-hunt-launch", "risk-register", "roadmap",
     "scope-decision", "shipping-retro", "sop-builder", "teach-team",
     "validate-idea", "voice-installer", "weeklyreview",
@@ -58,7 +58,7 @@ OUTPUT_FILES = {
     "customer-feedback.md", "decisions.md", "idea-exploration.md",
     "upgrade-log.md", "learnings.md", "meetings.md", "offer.md",
     "positioning.md", "pricing.md", "product-hunt-launch.md",
-    "risk-register.md", "roadmap.md", "shipping-retro.md", "voice.md",
+    "launch-retro.md", "risk-register.md", "roadmap.md", "shipping-retro.md", "voice.md",
     "review.md", "scope-decision.md", "validation.md", "gtm-plan.md",
 }
 

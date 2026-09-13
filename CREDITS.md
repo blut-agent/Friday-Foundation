@@ -2,7 +2,7 @@
 
 # Credits
 
-Twelve of Friday Shortcuts's 26 commands started as methodology from five
+Twelve of Friday Shortcuts's 27 commands started as methodology from five
 external, open-source projects. All five are MIT-licensed, confirmed live against
 the GitHub API on 2026-07-02. Nothing here was copied line for line. Each command
 was rewritten from the source project's methodology into Shortcuts's own command
@@ -65,6 +65,7 @@ merged, add a line for yourself here.
 - blut-agent, `/delegation-brief`
 - MoonTree26, `/customer-feedback`
 - subhamsubhan5641-bot, `/risk-register`
+- blut-agent, `/launch-retro`
 
 ## Why this file exists
 

@@ -259,3 +259,49 @@ def test_delegation_brief_command_matches_issue_contract():
     ]
     for term in required_terms:
         assert term in body
+
+
+def test_launch_retro_command_matches_issue_contract():
+    """The launch-retro command has the plan, comparison, and output contract requested in #25."""
+    text = (COMMANDS_DIR / "launch-retro.md").read_text(encoding="utf-8")
+    fm, body = parse_frontmatter(text)
+
+    assert fm["name"] == "launch-retro"
+    assert "friday/voice.md" in fm["description"]
+    assert "friday/launch-retro.md" in fm["description"]
+
+    required_sections = [
+        "# /launch-retro",
+        "## Step 1: Read the founder's voice profile (if it exists)",
+        "## Step 7: Write the retro",
+    ]
+    for section in required_sections:
+        assert section in body
+
+    required_terms = [
+        "friday/gtm-plan.md",
+        "friday/product-hunt-launch.md",
+        "Wins",
+        "Misses",
+        "Lessons",
+        "Unresolved questions",
+        "The one next experiment",
+        "friday/launch-retro.md",
+        "Launch retro saved to `friday/launch-retro.md`",
+    ]
+    for term in required_terms:
+        assert term in body
+
+
+def test_launch_retro_covers_both_input_paths_without_inventing_results():
+    """The plan-file path and the standalone path both work, and no metric is filled in."""
+    text = (COMMANDS_DIR / "launch-retro.md").read_text(encoding="utf-8")
+
+    assert "One plan file exists" in text, "the plan-file path must be handled explicitly"
+    assert "Neither plan file exists" in text, "the standalone path must be handled explicitly"
+    assert "recalled" in text, "expectations that were never written down must be labelled recalled"
+    assert "not measured" in text, "a missing result must be recorded as not measured"
+    assert "Never estimate, never interpolate" in text, "results must not be estimated"
+    assert "every expectation next to its result" in text, "no expectation may be skipped"
+    assert "Exactly one." in text, "the retro must end in one next experiment, not a list"
+    assert "does not send anything anywhere" in text, "the retro must stay on the founder's disk"

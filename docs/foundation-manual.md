@@ -55,7 +55,7 @@ curl -fsSL https://raw.githubusercontent.com/ronsleyvaz/Friday-Foundation/releas
 
 You need Claude Code installed first. Get it at https://docs.anthropic.com/claude-code
 
-The installer clones the whole Friday Shortcuts repository into one folder, `~/friday-shortcuts` (backing up an existing non-empty folder there to a timestamped copy rather than overwriting it), creates a `CLAUDE.md` brain file from `CLAUDE.md.template`, installs all 26 commands into `~/friday-shortcuts/.claude/commands/` so they work when Claude Code is opened from inside that folder, writes a two-row status line and Friday's own spinner words and tips into `~/friday-shortcuts/.claude/settings.json`, prints the version it just installed, then prints the one command for you to run to open Claude Code inside `~/friday-shortcuts`. The status line and spinner settings never touch your global Claude Code config, and merge into an existing `settings.json` rather than overwriting it (backed up first). The version comes from the `VERSION` file the clone ships; if it is missing, the install still finishes and says the version is unknown rather than guessing.
+The installer clones the whole Friday Shortcuts repository into one folder, `~/friday-shortcuts` (backing up an existing non-empty folder there to a timestamped copy rather than overwriting it), creates a `CLAUDE.md` brain file from `CLAUDE.md.template`, installs all 27 commands into `~/friday-shortcuts/.claude/commands/` so they work when Claude Code is opened from inside that folder, writes a two-row status line and Friday's own spinner words and tips into `~/friday-shortcuts/.claude/settings.json`, prints the version it just installed, then prints the one command for you to run to open Claude Code inside `~/friday-shortcuts`. The status line and spinner settings never touch your global Claude Code config, and merge into an existing `settings.json` rather than overwriting it (backed up first). The version comes from the `VERSION` file the clone ships; if it is missing, the install still finishes and says the version is unknown rather than guessing.
 
 ### Install a single command
 
@@ -158,7 +158,7 @@ Never use the words on the banned list.
 
 ---
 
-## The 26 commands
+## The 27 commands
 
 ### Set up first
 
@@ -193,6 +193,7 @@ Recommended early, though optional. Every other command reads this profile if it
 | `/positioning` | Builds a clear positioning statement and next move | `friday/positioning.md` |
 | `/competitive-analysis` | Competitor teardown: comparison matrix plus a SWOT for each competitor | `friday/competitive-analysis.md` |
 | `/product-hunt-launch` | Product Hunt specific launch runbook | `friday/product-hunt-launch.md` |
+| `/launch-retro` | Compares launch results with the plan and records wins, misses, and one next experiment | `friday/launch-retro.md` |
 
 ### Idea and scope
 
@@ -278,7 +279,7 @@ Never put API keys in command or agent files. They are tracked by git.
 
 ## What Shortcuts includes, and what comes next
 
-**Friday Shortcuts (here):** free, open-source, 26 commands. Bring your own Claude Code and your own API keys. Build from the skeleton up.
+**Friday Shortcuts (here):** free, open-source, 27 commands. Bring your own Claude Code and your own API keys. Build from the skeleton up.
 
 **The Amplify book:** the full methodology behind `/amplify`. All six Pyramid steps, the SymbioEthical framework, and case studies from founders who ran it. https://www.amazon.com/Amplify-Integrating-Intelligence-Humanity-Acceleration/dp/1998756831
 

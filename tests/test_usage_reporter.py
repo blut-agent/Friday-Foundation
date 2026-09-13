@@ -274,7 +274,7 @@ def test_receipt_not_trimmed_below_600(tmp_path):
 
 def test_allowlist_matches_commands_folder():
     real_slugs = {p.stem for p in (REPO_ROOT / "commands").glob("*.md")}
-    assert len(real_slugs) == 26
+    assert len(real_slugs) == 27
     for slug in sorted(real_slugs):
         with subprocess_tmp_install() as tmp_path:
             result = run_hook(tmp_path, {
@@ -293,12 +293,12 @@ def test_output_allowlist_matches_spec(tmp_path):
     flat_names = [
         "growth.md", "morning.md", "changelog.md", "competitive-analysis.md",
         "customer-feedback.md", "decisions.md", "idea-exploration.md",
-        "upgrade-log.md", "learnings.md", "meetings.md", "offer.md",
+        "upgrade-log.md", "launch-retro.md", "learnings.md", "meetings.md", "offer.md",
         "positioning.md", "pricing.md", "product-hunt-launch.md",
         "risk-register.md", "roadmap.md", "shipping-retro.md", "voice.md",
         "review.md", "scope-decision.md", "validation.md", "gtm-plan.md",
     ]
-    assert len(flat_names) == 22
+    assert len(flat_names) == 23
     for name in flat_names:
         with subprocess_tmp_install() as tmp_path2:
             result = run_write(tmp_path2, str(tmp_path2 / "friday" / name))
