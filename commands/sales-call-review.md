@@ -114,7 +114,7 @@ If the file does not exist, create it with this structure:
 
 | Who | Promise | Their words | Confirmed in source |
 |---|---|---|---|
-| <you / them> | <what was promised> | "<verbatim>" | yes / unconfirmed |
+| <you / them> | <what was promised> | "<verbatim>" | yes |
 
 ## Next actions
 
@@ -129,7 +129,7 @@ If the file does not exist, create it with this structure:
 <Name the sections the source does not cover, and what to capture on the next call.>
 ```
 
-If `friday/sales-call-review.md` already exists, add the new review at the top, immediately after the `# Sales Call Review` heading, so the newest call sits first. Keep earlier reviews intact.
+If `friday/sales-call-review.md` already exists, add the new call's material under the stable `# Sales Call Review` container heading at the top of the file (create that heading if the file somehow lacks it), so the newest call sits first. Each call is one entry under the container: start the entry with `## <customer or company> - <YYYY-MM-DD>` and keep earlier reviews intact.
 
 Write in the founder's voice for the prose sections. Quotes stay exactly as the customer said them, whatever your voice profile says, because they are evidence rather than writing. If the profile lists banned words, do not use any of them in the sections you write.
 
@@ -139,7 +139,7 @@ After writing, print:
 
 ## What this does not do
 
-This command does not join your calls, does not transcribe audio, does not read your CRM, and does not send anything anywhere. It does not score the deal or predict whether it closes. It reads the notes you give it, holds every claim to what those notes actually contain, and writes the review to your own disk.
+This command does not join your calls, does not transcribe audio, does not read your CRM, and does not send your notes, the transcript, or any part of the review anywhere. It does not score the deal or predict whether it closes. It reads the notes you give it, holds every claim to what those notes actually contain, and writes the review to your own disk. One thing does leave the machine: the pack's usual content-free usage ping, the same one every command triggers, which says that this command ran and whether it wrote its file. It carries no prompt text, no file contents, no names, and no paths.
 
 ## What this builds toward
 

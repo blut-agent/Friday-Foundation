@@ -307,9 +307,36 @@ def test_sales_call_review_is_evidence_bound_and_local_only():
     assert "No invented numbers" in text, "the review must not invent metrics or probabilities"
     assert "No invented sentiment" in text, "the review must report behavior, not guessed mood"
     assert "inference:" in text, "inferences must be labelled as inferences"
-    assert "does not send anything anywhere" in text, (
-        "the review must not be sent off the machine"
+    assert "does not send your notes, the transcript, or any part of the review" in text, (
+        "the review content must not be sent off the machine"
+    )
+    assert "content-free usage ping" in text, (
+        "the privacy section must disclose the content-free usage event the pack reports"
     )
     assert "does not transcribe audio" in text, (
         "the command must be explicit that it works from pasted text only"
+    )
+
+
+def test_sales_call_review_repeat_writes_are_well_formed():
+    """The repeat-write instruction has a stable container heading and a per-call entry."""
+    text = (COMMANDS_DIR / "sales-call-review.md").read_text(encoding="utf-8")
+
+    assert "under the stable `# Sales Call Review` container heading" in text, (
+        "the append instruction must anchor on the stable container heading, not the per-call title"
+    )
+    assert "## <customer or company> - <YYYY-MM-DD>" in text, (
+        "each repeat call needs its own per-call entry heading under the container"
+    )
+
+
+def test_sales_call_review_promises_are_always_sourced():
+    """Every row shown under Promises made is sourced; loose commitments go to Open items."""
+    text = (COMMANDS_DIR / "sales-call-review.md").read_text(encoding="utf-8")
+
+    assert "yes / unconfirmed" not in text, (
+        "Promises made must not offer an unconfirmed row; that belongs in Open items"
+    )
+    assert "move it to Open items" in text, (
+        "unsourced commitments must be redirected to Open items by the pre-write check"
     )
