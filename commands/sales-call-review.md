@@ -56,7 +56,7 @@ Work through the source and collect six things. For each one, the rule is the sa
 
 **Promises made.** Commitments from either side, each with who made it and what it was. If the source records a commitment loosely, quote the loose version rather than upgrading it into a firm one. "I'll try to get you numbers next week" is not "will send pricing Tuesday."
 
-**Next actions.** The concrete moves the call produced, each with an owner and, where the source gives one, a date. If the call produced no next action, say that plainly instead of inventing one to fill the section.
+**Next actions.** The concrete moves the call produced, each with an owner and, where the source gives one, a date. If the source names no owner, write `owner: not stated` rather than guessing who owns it. If the call produced no next action, say that plainly instead of inventing one to fill the section.
 
 Also record, in one short line each: who was on the call, and what the call was for. If the source does not say, write "not stated in the source" rather than guessing.
 
@@ -82,7 +82,7 @@ If the file does not exist, create it with this structure:
 ```markdown
 # Sales Call Review
 
-## <customer or company> - <YYYY-MM-DD>
+## <customer or company> - <YYYY-MM-DD or "date not stated">
 
 **Call date:** <YYYY-MM-DD, or "not stated in the source">
 **On the call:** <names and roles, or "not stated in the source">
@@ -120,7 +120,7 @@ If the file does not exist, create it with this structure:
 
 ## Next actions
 
-- [ ] <Action> - owner: <name> - by: <date or "no date given">
+- [ ] <Action> - owner: <name or "not stated"> - by: <date or "no date given">
 
 ## Open items
 
@@ -131,7 +131,7 @@ If the file does not exist, create it with this structure:
 <Name the sections the source does not cover, and what to capture on the next call.>
 ```
 
-If `friday/sales-call-review.md` already exists, do not create a second `# Sales Call Review` heading. Add the new call as one new `## <customer or company> - <YYYY-MM-DD>` entry directly under the existing `# Sales Call Review` container heading at the top of the file, so the newest call sits first, and keep every earlier entry intact. If the file starts with an old-style `# Sales Call Review: <customer>` heading from an earlier version, rename that line to `# Sales Call Review` and treat the old content as that customer's entry.
+If `friday/sales-call-review.md` already exists, do not create a second `# Sales Call Review` heading. Add the new call as one new `## <customer or company> - <YYYY-MM-DD or "date not stated">` entry directly under the existing `# Sales Call Review` container heading at the top of the file, so the newest call sits first, and keep every earlier entry intact. If the file starts with an old-style `# Sales Call Review: <customer>` heading from an earlier version, rename that line to `# Sales Call Review` and treat the old content as that customer's entry.
 
 Write in the founder's voice for the prose sections. Quotes stay exactly as the customer said them, whatever your voice profile says, because they are evidence rather than writing. If the profile lists banned words, do not use any of them in the sections you write.
 

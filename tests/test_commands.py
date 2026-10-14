@@ -328,8 +328,8 @@ def test_sales_call_review_repeat_writes_are_well_formed():
     assert "do not create a second `# Sales Call Review` heading" in text, (
         "repeat runs must not stack a second container heading"
     )
-    assert "## <customer or company> - <YYYY-MM-DD>" in text, (
-        "each call needs its own per-call entry heading under the container"
+    assert "## <customer or company> - <YYYY-MM-DD or \"date not stated\">" in text, (
+        "each call needs its own per-call entry heading under the container, with a no-date path"
     )
     assert text.count("# Sales Call Review: <customer or company>") == 0, (
         "the old per-customer H1 title must not survive in the first-write template"
