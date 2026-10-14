@@ -322,11 +322,20 @@ def test_sales_call_review_repeat_writes_are_well_formed():
     """The repeat-write instruction has a stable container heading and a per-call entry."""
     text = (COMMANDS_DIR / "sales-call-review.md").read_text(encoding="utf-8")
 
-    assert "under the stable `# Sales Call Review` container heading" in text, (
+    assert "directly under the existing `# Sales Call Review` container heading" in text, (
         "the append instruction must anchor on the stable container heading, not the per-call title"
     )
+    assert "do not create a second `# Sales Call Review` heading" in text, (
+        "repeat runs must not stack a second container heading"
+    )
     assert "## <customer or company> - <YYYY-MM-DD>" in text, (
-        "each repeat call needs its own per-call entry heading under the container"
+        "each call needs its own per-call entry heading under the container"
+    )
+    assert text.count("# Sales Call Review: <customer or company>") == 0, (
+        "the old per-customer H1 title must not survive in the first-write template"
+    )
+    assert "rename that line to `# Sales Call Review`" in text, (
+        "files written by the old template need a named migration path"
     )
 
 
@@ -339,4 +348,31 @@ def test_sales_call_review_promises_are_always_sourced():
     )
     assert "move it to Open items" in text, (
         "unsourced commitments must be redirected to Open items by the pre-write check"
+    )
+
+
+def test_sales_call_review_quotes_honor_the_source_type():
+    """Transcript quotes are verbatim; rough notes are quoted as written, never dressed up as the customer's own words."""
+    text = (COMMANDS_DIR / "sales-call-review.md").read_text(encoding="utf-8")
+
+    assert "In a transcript, quote verbatim" in text, (
+        "verbatim quoting must be tied to transcripts, where the words are the customer's"
+    )
+    assert "do not present it as the customer's own phrasing" in text, (
+        "rough notes must not be presented as customer wording"
+    )
+    assert "label the line as paraphrase" in text, (
+        "paraphrased notes must be labeled as paraphrase"
+    )
+
+
+def test_sales_call_review_refuses_secret_bearing_paths():
+    """Local file input refuses secret-bearing paths before reading them, per the house pattern."""
+    text = (COMMANDS_DIR / "sales-call-review.md").read_text(encoding="utf-8")
+
+    assert "refuse to read it and ask for a sanitized text file instead" in text, (
+        "secret-bearing paths must be refused before reading, matching customer-feedback and risk-register"
+    )
+    assert "environment file" in text and "token dump" in text, (
+        "the refusal must name the same path classes the house pattern names"
     )

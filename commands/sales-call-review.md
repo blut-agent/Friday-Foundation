@@ -26,7 +26,7 @@ Three input paths, all fine:
 
 1. **Pasted notes.** Raw bullets, shorthand, half sentences. All acceptable.
 2. **Pasted transcript.** Long is fine. Do not ask them to shorten it.
-3. **A local file path.** Read it with your own file tools. Markdown and plain text only. If the path points at a PDF, a spreadsheet, an audio file, or anything you cannot read as text, say so and ask for a paste or a text export instead. Do not attempt to install a converter.
+3. **A local file path.** Read it with your own file tools. Markdown and plain text only. If the path points at a PDF, a spreadsheet, an audio file, or anything you cannot read as text, say so and ask for a paste or a text export instead. Do not attempt to install a converter. If a path looks like a secret, credential, private key, environment file, token dump, browser export, cookie store, or unrelated personal data, refuse to read it and ask for a sanitized text file instead.
 
 Wait for the input before proceeding. Do not work from assumptions about the call.
 
@@ -46,7 +46,7 @@ If the founder gives you a redaction, honor it everywhere: in the quotes, in the
 
 Work through the source and collect six things. For each one, the rule is the same: if it is not in the source, it does not go in.
 
-**Customer language.** The exact phrases the customer used, quoted verbatim, with the speaker and a short pointer to where it sits in the source (a timestamp, a paragraph number, or the note heading). This is the section founders get wrong most often, because paraphrase quietly replaces the customer's own words with the founder's interpretation. Quote, do not tidy. If they said "it's kind of a lot of money for something my team might not open," that is the quote, not "price sensitive."
+**Customer language.** What the customer said, quoted the way the source supports. In a transcript, quote verbatim, with the speaker and a short pointer to where it sits (a timestamp or a paragraph number). In rough notes, the words are the founder's shorthand, not the customer's sentences, so quote the note line as written and do not present it as the customer's own phrasing; if a note plainly paraphrases, either ask the founder for the exact words or label the line as paraphrase. This is the section founders get wrong most often, because paraphrase quietly replaces the customer's words with the founder's interpretation. Quote what the source holds, do not tidy it into a better sentence. If the transcript has them saying "it's kind of a lot of money for something my team might not open," that is the quote, not "price sensitive."
 
 **Needs.** What the customer is actually trying to accomplish, stated separately from the words they used. Every need must trace back to at least one quote or note line. If a need is your inference rather than their statement, mark it as an inference in plain words.
 
@@ -80,7 +80,9 @@ Write the result to `friday/sales-call-review.md`. Create the `friday/` folder i
 If the file does not exist, create it with this structure:
 
 ```markdown
-# Sales Call Review: <customer or company>
+# Sales Call Review
+
+## <customer or company> - <YYYY-MM-DD>
 
 **Call date:** <YYYY-MM-DD, or "not stated in the source">
 **On the call:** <names and roles, or "not stated in the source">
@@ -129,7 +131,7 @@ If the file does not exist, create it with this structure:
 <Name the sections the source does not cover, and what to capture on the next call.>
 ```
 
-If `friday/sales-call-review.md` already exists, add the new call's material under the stable `# Sales Call Review` container heading at the top of the file (create that heading if the file somehow lacks it), so the newest call sits first. Each call is one entry under the container: start the entry with `## <customer or company> - <YYYY-MM-DD>` and keep earlier reviews intact.
+If `friday/sales-call-review.md` already exists, do not create a second `# Sales Call Review` heading. Add the new call as one new `## <customer or company> - <YYYY-MM-DD>` entry directly under the existing `# Sales Call Review` container heading at the top of the file, so the newest call sits first, and keep every earlier entry intact. If the file starts with an old-style `# Sales Call Review: <customer>` heading from an earlier version, rename that line to `# Sales Call Review` and treat the old content as that customer's entry.
 
 Write in the founder's voice for the prose sections. Quotes stay exactly as the customer said them, whatever your voice profile says, because they are evidence rather than writing. If the profile lists banned words, do not use any of them in the sections you write.
 
